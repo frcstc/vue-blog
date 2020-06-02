@@ -1,23 +1,29 @@
 <template>
-    <div>
-        <Header></Header>
-        <div class="block">
-            <el-timeline>
-                <el-timeline-item :timestamp="blog.created" placement="top" v-for="(blog,index) in blogs" :key="index">
-                    <el-card>
-                        <h4><router-link :to="{name:'BlogDetail', params:{blogId: blog.id}}">{{blog.title}}</router-link></h4>
-                        <p>{{blog.description}}</p>
-                    </el-card>
-                </el-timeline-item>
-            </el-timeline>
-            <el-pagination class="mpage"
-                    background
-                    layout="prev, pager, next"
-                    :current-page="currentPage"
-                    :page-size="pageSize"
-                    :total="total"
-                    @current-change =page>
-            </el-pagination>
+    <div class="container">
+        <div class="page-content">
+            <Header></Header>
+            <div class="block">
+                <el-timeline>
+                    <el-timeline-item :timestamp="blog.created" placement="top" v-for="(blog,index) in blogs"
+                                      :key="index">
+                        <el-card>
+                            <h4>
+                                <router-link :to="{name:'BlogDetail', params:{blogId: blog.id}}">{{blog.title}}
+                                </router-link>
+                            </h4>
+                            <p>{{blog.description}}</p>
+                        </el-card>
+                    </el-timeline-item>
+                </el-timeline>
+                <el-pagination class="mpage"
+                               background
+                               layout="prev, pager, next"
+                               :current-page="currentPage"
+                               :page-size="pageSize"
+                               :total="total"
+                               @current-change=page>
+                </el-pagination>
+            </div>
         </div>
         <Footer></Footer>
     </div>
@@ -26,28 +32,29 @@
 <script>
     import Header from "../components/Header"
     import Footer from "../components/Footer";
+
     export default {
         name: "Blogs",
-        components: {Header,Footer},
-        data(){
-          return {
-              blogs:{
-
-              },
-              currentPage:1,
-              total:0,
-              pageSize:5
-          }
+        components: {Header, Footer},
+        data() {
+            return {
+                blogs: {},
+                currentPage: 1,
+                total: 0,
+                pageSize: 5
+            }
         },
-        methods:{
+        methods: {
             page(currentPage) {
                 const _this = this;
                 _this.$axios.get("/blogs?currentPage=" + currentPage).then(res => {
                     console.log(res)
-                    _this.blogs = res.data.data.records;
+                    _this.blogs = [
+                        ...res.data.data.records
+                    ];
                     _this.currentPage = res.data.data.current;
                     _this.total = res.data.data.total;
-                    _this.pageSize= res.data.data.size;
+                    _this.pageSize = res.data.data.size;
                 })
             }
         },
@@ -58,8 +65,18 @@
 </script>
 
 <style scoped>
+    .container {
+        height: 100%;
+    }
+    .page-content {
+        min-height: calc(100% - 100px);
+    }
     .mpage {
         margin: 0 auto;
         text-align: center;
+    }
+
+    .mblog {
+        min-height: 100%;
     }
 </style>

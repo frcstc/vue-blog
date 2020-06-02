@@ -1,6 +1,6 @@
 <template>
     <div class="m-content">
-        <h3>欢迎来到汇众优品程序园</h3>
+        <h3 class="header-title">欢迎来到汇众优品程序园</h3>
         <div class="block">
             <el-avatar :size="50" :src="user.avatar"></el-avatar>
             <div>
@@ -49,6 +49,7 @@
         created() {
             if (this.$store.getters.getUserInfo.username) {
                 this.user.username = this.$store.getters.getUserInfo.username;
+                this.user.avatar = this.$store.getters.getUserInfo.avatar;
                 this.hasLogin = true;
             }
         }
@@ -56,6 +57,10 @@
 </script>
 
 <style scoped>
+    .header-title {
+        margin: 0;
+        padding: 1em 0;
+    }
     .m-content {
         max-width: 960px;
         margin: 0 auto;

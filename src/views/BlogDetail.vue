@@ -1,24 +1,29 @@
 <template>
-    <div>
-        <Header></Header>
-        <div class="mblog">
-            <h2>{{blog.title}}</h2>
-            <el-link icon="el-icon-edit" v-if="ownBlog">
-                <router-link :to="{name:'BlogEdit', params:{blogId: blog.id}}">编辑</router-link>
-            </el-link>
-            <el-divider></el-divider>
-            <div v-html="blog.content" class="markdown-body"></div>
+    <div class="container">
+        <div class="content">
+            <Header></Header>
+            <div class="mblog">
+                <h2>{{blog.title}}</h2>
+                <el-link icon="el-icon-edit" v-if="ownBlog">
+                    <router-link :to="{name:'BlogEdit', params:{blogId: blog.id}}">编辑</router-link>
+                </el-link>
+                <el-divider></el-divider>
+                <div v-html="blog.content" class="markdown-body"></div>
+            </div>
         </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
     import "github-markdown-css"
     import Header from "../components/Header";
+    import Footer from "../components/Footer";
     export default {
         name: "BlogDetail",
         components:{
-            Header
+            Header,
+            Footer
         },
         data() {
             return {
@@ -50,6 +55,12 @@
 </script>
 
 <style scoped>
+    .container {
+        height: 100%;
+    }
+    .content{
+        min-height: calc(100% - 100px);
+    }
     .mblog{
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         width: 100%;
