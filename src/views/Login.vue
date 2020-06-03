@@ -3,7 +3,7 @@
         <div class="login-content">
             <el-container>
                 <el-header>
-                    <img src="" class=".mlogo" alt=""/>
+                    <img src="../assets/logo.png" class=".mlogo"  width="60px" alt=""/>
                 </el-header>
                 <el-main>
                     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">

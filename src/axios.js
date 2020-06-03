@@ -2,7 +2,7 @@ import axios from 'axios'
 import ElementUI from 'element-ui'
 import router from "./router";
 
-axios.defaults.baseURL = "http://10.7.54.222:8081";
+axios.defaults.baseURL = "http://www.hzgood.net:8081";
 //前置拦截
 axios.interceptors.request.use(config => {
 
