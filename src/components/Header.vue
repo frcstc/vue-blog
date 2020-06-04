@@ -16,6 +16,7 @@
             <span v-show="!hasLogin"><el-link type="info" href="/login">登陆</el-link></span>
             <span v-show="hasLogin"><el-link type="danger" @click="logout">退出</el-link></span>
         </div>
+        <div v-show="!hasLogin" style="color:orangered; font-size: small">注册请发送json："{username：'xxxx'}" 至 343663190@qq.com</div>
     </div>
 </template>
 
