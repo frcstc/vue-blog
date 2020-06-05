@@ -12,8 +12,8 @@
             </div>
             <div style="text-align: center">
                 <p style="font-size: larger">喜欢就打赏下呗：</p>
-                <img src="http://chuantu.xyz/t6/738/1591171138x1700340378.png" width="200px" >
-                <img src="http://chuantu.xyz/t6/738/1591171154x1700340449.png" width="200px" >
+                <img src="../assets/a.png" width="200px" >
+                <img src="../assets/b.png" width="200px" >
             </div>
         </div>
         <Footer></Footer>
